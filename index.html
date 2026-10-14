@@ -71,7 +71,7 @@
   <section class="section" id="analysis" aria-labelledby="analysis-title">
     <div class="shell">
       <div class="section-kicker">03 <span>/</span> WHY IT WORKS</div>
-      <div class="section-heading"><div><h2 id="analysis-title"><span class="heading-main">The right amount</span> <em>of refinement.</em></h2></div><p>Tail reuse reduces the amount of denoising needed, but no single denoising budget works for every sample. Confidence makes reuse adaptive rather than unconditional.</p></div>
+      <div class="section-heading"><div><h2 id="analysis-title"><span class="heading-main">The right</span> <em>amount of refinement.</em></h2></div><p>Tail reuse reduces the amount of denoising needed, but no single denoising budget works for every sample. Confidence makes reuse adaptive rather than unconditional.</p></div>
       <div class="insights-grid">
         <article class="insight"><div class="insight-label">OBSERVATION A <span>·</span> FIGURE 3</div><h3>Fewer steps can be enough.</h3><p>Tail initialization reaches the 10-step Gaussian baseline with 4 steps for π₀.₅ and 6 for SmolVLA, across the tested diagnostic benchmarks.</p><figure><img src="assets/figures/figure-3-tail-reuse.webp" alt="Figure 3: Error ratios for tail initialization with 2, 4, 6 and 8 denoising steps against a 10-step Gaussian reference." loading="eager" width="1212" height="471"/><figcaption>Action-tail initialization vs. Gaussian restart.</figcaption></figure></article>
         <article class="insight"><div class="insight-label">OBSERVATION B <span>·</span> FIGURE 2</div><h3>One budget does not fit all.</h3><p>Sample-wise optimal denoising steps span 1–10. The distribution varies considerably across samples and model backbones.</p><figure><img src="assets/figures/figure-2-adaptive-budget.webp" alt="Figure 2: Distributions of optimal denoising steps for pi zero point five and SmolVLA." loading="eager" width="1212" height="519"/><figcaption>Optimal denoising steps are sample-dependent.</figcaption></figure></article>
@@ -82,7 +82,7 @@
   <section class="section results-section tinted" id="experiments" aria-labelledby="experiments-title">
     <div class="shell">
       <div class="section-kicker">04 <span>/</span> EXPERIMENTS</div>
-      <div class="section-heading"><div><h2 id="experiments-title"><span class="heading-main">Efficiency,</span> <em>without the trade-off.</em></h2></div><p>Evaluated on four VLA backbones and four benchmarks. VLA-Rolling lowers chunk inference latency in all 16 model–benchmark combinations, while success rate rises in 14.</p></div>
+      <div class="section-heading"><div><h2 id="experiments-title"><span class="heading-main">Efficiency,</span> <em>no need to trade-off.</em></h2></div><p>Evaluated on four VLA backbones and four benchmarks. VLA-Rolling lowers chunk inference latency in all 16 model–benchmark combinations, while success rate rises in 14.</p></div>
       <div class="results-highlight"><div><span class="highlight-eyebrow">ACROSS ALL 16 PAIRS</span><h3>Less compute.<br/><span>Better control.</span></h3><p>The largest latency reduction is 32.52% (MolmoAct2 on LIBERO); the largest success gain is +15.08% (SmolVLA on LIBERO-Plus).</p></div><div class="highlight-metrics"><div><strong>−32.52<span>%</span></strong><small>Largest chunk-latency reduction</small></div><div><strong>+15.08<span>%</span></strong><small>Largest success-rate increase</small></div></div></div>
       <div class="result-content">
         <div class="table-top"><div><h3>Benchmark comparison</h3><p>Choose a benchmark to inspect all four VLA backbones.</p></div><span class="table-tag">Table 1 · Main paper</span></div>
@@ -139,10 +139,26 @@
       <section class="experiment-detail" id="confidence" aria-labelledby="confidence-title">
         <div class="section-kicker">CONFIDENCE ANALYSIS <span>/</span> FIGURE 5</div>
         <div class="section-heading"><div><h2 id="confidence-title"><span class="heading-main">Different outcomes,</span> <em>different budgets.</em></h2></div><p>On MetaWorld, successful and failed trajectories receive different denoising budgets within every task-difficulty group. Figure 5 compares their average steps and episode counts.</p></div>
-        <figure class="figure-card confidence-figure">
-          <a href="assets/figures/figure-5-confidence.webp" target="_blank" rel="noopener" aria-label="Open Figure 5 at full resolution"><img src="assets/figures/figure-5-confidence.webp" alt="Figure 5: Successful versus failed episodes average 7.23 versus 5.80 denoising steps on easy tasks, 8.34 versus 6.01 on medium, 6.20 versus 4.35 on hard, and 7.03 versus 5.96 on very hard. Success/failure counts are 350/70, 87/78, 48/42, and 24/51 respectively." loading="lazy" width="1209" height="417" /></a>
-          <figcaption><strong>Figure 5.</strong> Average denoising steps by task difficulty (left), with successful and failed episode counts (right). <span>From the manuscript, p. 9.</span> <a class="figure-zoom" href="assets/figures/figure-5-confidence.webp" target="_blank" rel="noopener">View full size ↗</a></figcaption>
-        </figure>
+        <div class="figure-card confidence-layout">
+          <figure class="confidence-figure">
+            <div class="confidence-chart-crop"><img src="assets/figures/figure-5-confidence.webp" alt="Figure 5 bar chart: Successful versus failed episodes average 7.23 versus 5.80 denoising steps on easy tasks, 8.34 versus 6.01 on medium, 6.20 versus 4.35 on hard, and 7.03 versus 5.96 on very hard." loading="lazy" width="1209" height="417" /></div>
+            <figcaption><strong>Figure 5.</strong> Average denoising steps by task difficulty. <span>From the manuscript, p. 9.</span> <a class="figure-zoom" href="assets/VLA-Rolling.pdf#page=9" target="_blank" rel="noopener">View in paper ↗</a></figcaption>
+          </figure>
+          <aside class="confidence-episodes" aria-labelledby="episodes-title">
+            <h3 id="episodes-title">Episode counts</h3>
+            <p>Successful and failed trajectories in each difficulty group.</p>
+            <table aria-label="Figure 5 episode counts by task difficulty">
+              <thead><tr><th scope="col">Difficulty</th><th scope="col">Successful</th><th scope="col">Failed</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Easy</th><td>350</td><td>70</td></tr>
+                <tr><th scope="row">Medium</th><td>87</td><td>78</td></tr>
+                <tr><th scope="row">Hard</th><td>48</td><td>42</td></tr>
+                <tr><th scope="row">Very hard</th><td>24</td><td>51</td></tr>
+              </tbody>
+            </table>
+            <p class="episode-source">MetaWorld · Figure 5</p>
+          </aside>
+        </div>
         <div class="evidence-notes">
           <article class="evidence-note"><h3>A consistent gap within each group.</h3><p>Successful episodes average <strong>1.43, 2.33, 1.85, and 1.07 more steps</strong> than failed episodes on easy, medium, hard, and very hard tasks. The largest gap is on medium tasks: 8.34 versus 6.01. These averages show that confidence-guided budget allocation distinguishes trajectories with different outcomes.</p></article>
           <article class="evidence-note"><h3>More steps are not a guarantee.</h3><p>The average budget does not rise monotonically with task difficulty: successful medium tasks use more steps than successful hard or very hard tasks. Episode counts also differ across groups (from 350 successes on easy tasks to 24 on very hard tasks). Figure 5 shows an association with outcomes; it does not establish that simply adding denoising steps causes success.</p></article>
