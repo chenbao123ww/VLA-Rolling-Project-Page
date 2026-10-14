@@ -1,8 +1,8 @@
 # VLA-Rolling 论文主页部署说明
 
-## 发布前请先确认：双盲评审
+## 当前论文版本
 
-你上传的 PDF 首页注明 **ICLR 2027 双盲评审中（Anonymous authors）**。如果你现在用个人 GitHub 账号公开发布主页，主页/代码仓库的归属可能暴露作者身份。**请先确认投稿会议的匿名政策与公开时间要求**，再将主页仓库设为公开。以下步骤只是技术部署方法，并不代表建议立即公开。
+网页使用 `assets/VLA_Rolling_OmniAI.pdf`（2026 年 10 月），作者顺序、浙江大学单位信息和通讯作者均按新版 PDF 首页展示，BibTeX 已同步更新。
 
 ## 主页已有内容
 
@@ -11,7 +11,7 @@
 - Table 1 的全部 16 组实验结果，可在网页中切换 LIBERO、MetaWorld、LIBERO-Plus、RoboTwin 2.0。
 - Table 2 的完整组件消融结果与分析，以及 Figure 5 的置信度与去噪预算分析。
 - 真实机器人实验结果（70% → 75%，227.28 → 176.50 ms/chunk）。
-- Paper、Code、Model、arXiv 按钮及匿名草稿 BibTeX。
+- Paper、Code、Model、arXiv 按钮及包含完整作者信息的 BibTeX。
 
 ## 第一步：本地预览
 
@@ -29,7 +29,7 @@ python -m http.server 8000
 
 ```js
 window.VLARollingConfig = {
-  paperPdf: "assets/VLA-Rolling.pdf", // 本地论文 PDF；现在已能打开
+  paperPdf: "assets/VLA_Rolling_OmniAI.pdf", // 本地论文 PDF；现在已能打开
   arxiv: "",                          // 等投稿 arXiv 后填 URL
   code: "https://github.com/chenbao123ww/VLA-Rolling",
   huggingface: "",                    // 等模型发布后填 URL
@@ -40,7 +40,7 @@ window.VLARollingConfig = {
 
 `code` 指向你的**私有**仓库；外部访客在仓库未公开时可能显示 404 或无访问权限。
 
-## 第三步：发布到 GitHub Pages（仅在允许公开时）
+## 第三步：发布到 GitHub Pages
 
 1. 在 GitHub 新建公开仓库，推荐命名为 `VLA-Rolling-site`。
 2. 将本地项目文件夹的内容上传到仓库根目录，确保 `index.html` 在根目录。
@@ -52,6 +52,8 @@ window.VLARollingConfig = {
 
 仓库名改变会影响最终 URL，但不影响站内图片和资源路径。
 
-## 文章审稿结束后
+## 后续更新
 
-在 `index.html` 更新作者列表、投稿状态、引用 BibTeX。此版本使用 Anonymous Authors 和 Under review，不宣称已被任何会议接收。以后替换 PDF 时保持 `assets/VLA-Rolling.pdf` 文件名，或者同步修改 `site-config.js`。
+在 `index.html` 更新作者列表、单位和引用 BibTeX。更换 PDF 文件名时，同时修改 `site-config.js` 以及 `index.html` 中的所有 PDF 链接和页码引用。
+
+新版 PDF 的 Table 1 中，π₀.₅ 在 MetaWorld 上的基线为 67.22，结果为 67.88，但差值仍印为 +9.32。网页按前两项数值计算为 +0.66，与新版 Table 2 一致；上传的 PDF 文件未做修改。

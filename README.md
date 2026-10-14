@@ -2,9 +2,9 @@
 
 A complete, dependency-free research project website generated from the manuscript **“VLA-Rolling: Fewer Denoising Steps, Better Control via Adaptive Action Reuse.”**
 
-## Important: double-blind review
+## Current manuscript
 
-**The supplied PDF is marked “Under review as a conference paper at ICLR 2027” and “Anonymous authors / Paper under double-blind review.”** A public GitHub Pages website, especially one connecting the paper to your personal GitHub account, may reveal authorship and may be inconsistent with the venue's double-blind rules. **Confirm the current conference policy with your coauthors or program chairs before publicly deploying the site.** This template does *not* claim paper acceptance and intentionally uses anonymous citation metadata. A public page is not a private preview.
+The website uses the October 2026 manuscript `assets/VLA_Rolling_OmniAI.pdf`, including its 13-author byline, Zhejiang University affiliation, and correspondence information for Jie Zhang. The BibTeX entry cites this manuscript.
 
 ## Included
 
@@ -12,7 +12,7 @@ A complete, dependency-free research project website generated from the manuscri
 - `styles.css` — responsive layout and typography
 - `script.js` — benchmark tabs, mobile navigation, BibTeX copy, resource-link states
 - `site-config.js` — **edit this file to set URLs in one place**
-- `assets/VLA-Rolling.pdf` — uploaded manuscript, opened by the **Paper (PDF)** button
+- `assets/VLA_Rolling_OmniAI.pdf` — uploaded manuscript, opened by the **Paper (PDF)** button
 - `assets/figures/` — original manuscript Figures 1, 2, 3, 4, 5, and 6 extracted from the PDF (all six figures are displayed on the page)
 - `assets/favicon.svg` — favicon
 - `.nojekyll` — disable unnecessary Jekyll processing
@@ -31,7 +31,7 @@ Then visit `http://localhost:8000/`.
 
 ## Deploy to GitHub Pages
 
-1. **Check double-blind disclosure rules before going public.**
+1. Review the manuscript, author list, and resource links before publishing.
 2. Create a new **public** GitHub repository named `VLA-Rolling-site` under `chenbao123ww` (or another name you prefer). Keep your research code repo private if needed.
 3. Upload **the contents** of this directory to the root of the new repo, so `index.html` is in the repository root. Or use git:
 
@@ -58,7 +58,7 @@ Edit **`site-config.js`**:
 
 ```js
 window.VLARollingConfig = {
-  paperPdf: "assets/VLA-Rolling.pdf",
+  paperPdf: "assets/VLA_Rolling_OmniAI.pdf",
   arxiv: "", // e.g. https://arxiv.org/abs/XXXX.XXXXX
   code: "https://github.com/chenbao123ww/VLA-Rolling",
   huggingface: "", // e.g. https://huggingface.co/username/model-name
@@ -69,17 +69,19 @@ The PDF button is already functional and opens the included manuscript. `arxiv` 
 
 ## Update authors / status / citation
 
-The manuscript itself has **anonymous authors**. Update the hero byline and the `#bibtex` element in `index.html` **only when permitted by the review policy**. The default BibTeX is an anonymous under-review draft, not a publication record.
+Update the hero author list, affiliation, correspondence, and the `#bibtex` element in `index.html` when the manuscript metadata changes. Author order currently follows the October 2026 PDF. Update all PDF links in `index.html` and `site-config.js` when replacing the PDF under a different filename.
 
 ## Manuscript-grounded content
 
-- Hero facts: manuscript Abstract and Table 1 (p. 1 and p. 7).
+- Hero facts: manuscript Abstract and Table 1 (p. 1 and p. 8).
 - Overview: Figure 1 (p. 2); key question in Section 1.
-- Method: Figure 4 (p. 5); stages in Section 3, pages 4–6.
-- Tail reuse diagnostics: Figures 2 and 3 (pp. 3–4).
-- Benchmarks: exact values from Table 1 (p. 7). Two X-VLA pairs see slight success-rate decreases; the site discloses this.
+- Method: Figure 4 (p. 6); stages in Section 3, pages 4–7.
+- Tail reuse diagnostics: Figures 2 and 3 (p. 4).
+- Benchmarks: baseline and VLA-Rolling values from Table 1 (p. 8). Two X-VLA pairs see slight success-rate decreases; the site discloses this.
 - Component ablation: Table 2 (p. 8), including its own baseline measurements and all five variants.
 - Confidence analysis: Figure 5 (p. 9), including step differences and episode counts.
-- Real-world experiment: Figure 6 (p. 9) and Table 4 (p. 8).
+- Real-world experiment: Figure 6 (p. 9) and Table 4 (p. 10).
+
+The October 2026 PDF's Table 1 updates the π₀.₅ MetaWorld baseline to 67.22 but still prints +9.32 for its success-rate change. The website calculates this difference from the displayed values: 67.88 − 67.22 = +0.66, consistent with the updated Table 2. The uploaded PDF is preserved unchanged.
 
 **No tracking code, remote fonts, JavaScript frameworks, build tools, or external dependencies** are needed.
