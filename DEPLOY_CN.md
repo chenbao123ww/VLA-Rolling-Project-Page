@@ -41,13 +41,13 @@ window.VLARollingConfig = {
 
 ## 第三步：发布到 GitHub Pages（仅在允许公开时）
 
-1. 在 GitHub 新建公开仓库，推荐命名为 `VLA-Rolling-Project-Page`。
-2. 将 ZIP 内 `VLA-Rolling-Project-Page/` **文件夹的内容** 上传到仓库根目录，确保 `index.html` 在根目录。
+1. 在 GitHub 新建公开仓库，推荐命名为 `VLA-Rolling-site`。
+2. 将本地项目文件夹的内容上传到仓库根目录，确保 `index.html` 在根目录。
 3. 进入仓库 `Settings → Pages`。
 4. 在 `Build and deployment` 中选择 `Deploy from a branch`，分支选择 `main`，路径选择 `/(root)`。
 5. 保存，等待 Pages 完成构建，地址预计为：
 
-   `https://chenbao123ww.github.io/VLA-Rolling-Project-Page/`
+   `https://chenbao123ww.github.io/VLA-Rolling-site/`
 
 仓库名改变会影响最终 URL，但不影响站内图片和资源路径。
 

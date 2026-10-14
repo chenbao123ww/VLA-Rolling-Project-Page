@@ -32,23 +32,23 @@ Then visit `http://localhost:8000/`.
 ## Deploy to GitHub Pages
 
 1. **Check double-blind disclosure rules before going public.**
-2. Create a new **public** GitHub repository named `VLA-Rolling-Project-Page` under `chenbao123ww` (or another name you prefer). Keep your research code repo private if needed.
+2. Create a new **public** GitHub repository named `VLA-Rolling-site` under `chenbao123ww` (or another name you prefer). Keep your research code repo private if needed.
 3. Upload **the contents** of this directory to the root of the new repo, so `index.html` is in the repository root. Or use git:
 
 ```bash
-cd VLA-Rolling-Project-Page
+cd /mnt/nfs/share/hesicheng/VLA-Rolling-Project-Page
 git init
 git add .
 git commit -m "Add VLA-Rolling project page"
 git branch -M main
-git remote add origin https://github.com/chenbao123ww/VLA-Rolling-Project-Page.git
+git remote add origin https://github.com/chenbao123ww/VLA-Rolling-site.git
 git push -u origin main
 ```
 
 4. In the new repository, select **Settings → Pages → Build and deployment → Deploy from a branch**, choose **main** and **/(root)**, and save.
 5. After Pages builds, the expected URL is:
 
-   `https://chenbao123ww.github.io/VLA-Rolling-Project-Page/`
+   `https://chenbao123ww.github.io/VLA-Rolling-site/`
 
 GitHub Pages availability and publication settings can vary by account and repository visibility. The website uses only relative paths and works in a project-repository subpath.
 
