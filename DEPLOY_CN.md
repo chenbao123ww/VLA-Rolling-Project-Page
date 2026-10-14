@@ -7,7 +7,8 @@
 ## 主页已有内容
 
 - 论文标题、基于原文整理的简介、方法三个阶段及公式。
-- 从 PDF 提取的原始方法框架和实验图：Figure 1、2、3、4、5、6。
+- Figure 1 和 Figure 4 使用上传的 `Intro.pdf`、`Overview.pdf` 导出的高清 SVG，点击可查看原始 PDF。
+- Figure 2 为去噪步数与误差曲线，Figure 3 为最优步数分布；顺序与最新版论文一致。Figure 5、6 保留原文实验图。
 - Table 1 的全部 16 组实验结果，可在网页中切换 LIBERO、MetaWorld、LIBERO-Plus、RoboTwin 2.0。
 - Table 2 的完整组件消融结果与分析，以及 Figure 5 的置信度与去噪预算分析。
 - 真实机器人实验结果（70% → 75%，227.28 → 176.50 ms/chunk）。

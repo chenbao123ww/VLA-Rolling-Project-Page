@@ -67,6 +67,8 @@ h2 em{font-family:Georgia,'Times New Roman',serif;color:#22836b;font-weight:500;
 .section-heading p{max-width:480px;color:#627675;line-height:1.75;font-size:15px;margin:0 0 5px}
 .figure-card{background:#fff;border:1px solid #dce7e2;border-radius:20px;margin:0;box-shadow:var(--shadow);overflow:hidden}
 .figure-card>img{width:100%;object-fit:contain}
+.figure-document{display:block}
+.figure-document img{width:100%;height:auto}
 .featured-figure{padding:25px 25px 0}
 .figure-card figcaption{padding:13px 18px 18px;font-size:12px;color:#687c7b;line-height:1.65;border-top:1px solid #edf2ef}
 .figure-card figcaption strong{color:#345b54}

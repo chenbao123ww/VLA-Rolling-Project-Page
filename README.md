@@ -13,7 +13,9 @@ The website uses the October 2026 manuscript `assets/VLA_Rolling_OmniAI.pdf`, in
 - `script.js` — benchmark tabs, mobile navigation, BibTeX copy, resource-link states
 - `site-config.js` — **edit this file to set URLs in one place**
 - `assets/VLA_Rolling_OmniAI.pdf` — uploaded manuscript, opened by the **Paper (PDF)** button
-- `assets/figures/` — original manuscript Figures 1, 2, 3, 4, 5, and 6 extracted from the PDF (all six figures are displayed on the page)
+- `assets/figures/Intro.pdf` / `Intro.svg` — original Figure 1 PDF and its web-ready SVG export
+- `assets/figures/Overview.pdf` / `Overview.svg` — original Figure 4 PDF and its web-ready SVG export
+- `assets/figures/` — Figures 2 (tail-reuse curves), 3 (adaptive-budget distribution), 5, and 6 are displayed from manuscript assets
 - `assets/favicon.svg` — favicon
 - `.nojekyll` — disable unnecessary Jekyll processing
 
@@ -73,15 +75,26 @@ Update the hero author list, affiliation, correspondence, and the `#bibtex` elem
 
 ## Manuscript-grounded content
 
-- Hero facts: manuscript Abstract and Table 1 (p. 1 and p. 8).
+- Hero facts: manuscript Abstract and Table 1 (p. 1 and p. 7).
 - Overview: Figure 1 (p. 2); key question in Section 1.
-- Method: Figure 4 (p. 6); stages in Section 3, pages 4–7.
-- Tail reuse diagnostics: Figures 2 and 3 (p. 4).
-- Benchmarks: baseline and VLA-Rolling values from Table 1 (p. 8). Two X-VLA pairs see slight success-rate decreases; the site discloses this.
+- Method: Figure 4 (p. 5); stages in Section 3, pages 4–6.
+- Tail reuse diagnostics: Figure 2, tail-reuse curves (p. 3), and Figure 3, optimal-step distribution (p. 4).
+- Benchmarks: baseline and VLA-Rolling values from Table 1 (p. 7). Two X-VLA pairs see slight success-rate decreases; the site discloses this.
 - Component ablation: Table 2 (p. 8), including its own baseline measurements and all five variants.
 - Confidence analysis: Figure 5 (p. 9), including step differences and episode counts.
-- Real-world experiment: Figure 6 (p. 9) and Table 4 (p. 10).
+- Real-world experiment: Figure 6 (p. 9) and Table 4 (p. 9).
 
 The October 2026 PDF's Table 1 updates the π₀.₅ MetaWorld baseline to 67.22 but still prints +9.32 for its success-rate change. The website calculates this difference from the displayed values: 67.88 − 67.22 = +0.66, consistent with the updated Table 2. The uploaded PDF is preserved unchanged.
 
 **No tracking code, remote fonts, JavaScript frameworks, build tools, or external dependencies** are needed.
+
+## Refresh the high-resolution diagrams
+
+The SVGs preserve the uploaded PDFs' vector content and embedded images without redrawing. Regenerate them with:
+
+```bash
+pdftocairo -svg assets/figures/Intro.pdf assets/figures/Intro.svg
+pdftocairo -svg assets/figures/Overview.pdf assets/figures/Overview.svg
+```
+
+The website displays the SVGs and links to the corresponding original PDFs.
