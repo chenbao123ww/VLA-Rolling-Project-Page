@@ -49,7 +49,7 @@
 
   <section class="figure-intro shell" id="overview" aria-labelledby="overview-title">
     <div class="section-kicker">01 <span>/</span> THE BIG PICTURE</div>
-    <div class="section-heading"><div><h2 id="overview-title">Make every action <em>count.</em></h2></div><p>Traditional receding-horizon control throws away the unexecuted tail of each action chunk. VLA-Rolling turns that discarded computation into the starting point for the next decision.</p></div>
+    <div class="section-heading"><div><h2 id="overview-title"><span class="heading-main">Make every action</span> <em>count.</em></h2></div><p>Traditional receding-horizon control throws away the unexecuted tail of each action chunk. VLA-Rolling turns that discarded computation into the starting point for the next decision.</p></div>
     <figure class="figure-card featured-figure"><img src="assets/figures/figure-1-overview.webp" alt="Figure 1: Standard receding-horizon VLA discards the action tail, whereas VLA-Rolling passes it to the next round for confidence-guided refinement." loading="eager" width="1224" height="516" /><figcaption><strong>Figure 1.</strong> Instead of restarting from Gaussian noise each round, VLA-Rolling inherits and selectively refines previously predicted actions. <span>From the manuscript, p. 2.</span></figcaption></figure>
     <div class="takeaway"><span class="takeaway-label">CENTRAL INSIGHT</span><p>An action tail is not a finished plan and not fresh noise. It is a <strong>reusable intermediate state</strong> whose value depends on how the environment has changed.</p></div>
   </section>
@@ -57,7 +57,7 @@
   <section class="section tinted" id="method" aria-labelledby="method-title">
     <div class="shell">
       <div class="section-kicker">02 <span>/</span> THE METHOD</div>
-      <div class="section-heading"><div><h2 id="method-title">Reuse. Evaluate. <em>Refine.</em></h2></div><p>A lightweight, three-stage inference framework learns when to preserve an inherited action and when to correct it. The original VLA stays frozen.</p></div>
+      <div class="section-heading"><div><h2 id="method-title"><span class="heading-main">Reuse. Evaluate.</span> <em>Refine.</em></h2></div><p>A lightweight, three-stage inference framework learns when to preserve an inherited action and when to correct it. The original VLA stays frozen.</p></div>
       <figure class="figure-card method-figure"><img src="assets/figures/figure-4-method.webp" loading="eager" alt="Figure 4: The VLA-Rolling inference pipeline and offline training of the action confidence estimator." width="1236" height="534" /><figcaption><strong>Figure 4.</strong> VLA-Rolling inference (left) and confidence estimator training (right). <span>From the manuscript, p. 5.</span></figcaption></figure>
       <div class="steps-grid">
         <article class="step-card"><div class="step-top"><span class="step-num">01</span><span class="step-token">INHERIT</span></div><h3>Action-tail inheritance</h3><p>Execute a short prefix and align the unexecuted actions with the next planning window. Cache the prior context and the motion already predicted by the VLA.</p><div class="formula">A<sup>tail</sup> = A<sub>K:H</sub> <span>·</span> L = H − K</div></article>
@@ -71,7 +71,7 @@
   <section class="section" id="analysis" aria-labelledby="analysis-title">
     <div class="shell">
       <div class="section-kicker">03 <span>/</span> WHY IT WORKS</div>
-      <div class="section-heading"><div><h2 id="analysis-title">The right amount <em>of refinement.</em></h2></div><p>Tail reuse reduces the amount of denoising needed, but no single denoising budget works for every sample. Confidence makes reuse adaptive rather than unconditional.</p></div>
+      <div class="section-heading"><div><h2 id="analysis-title"><span class="heading-main">The right amount</span> <em>of refinement.</em></h2></div><p>Tail reuse reduces the amount of denoising needed, but no single denoising budget works for every sample. Confidence makes reuse adaptive rather than unconditional.</p></div>
       <div class="insights-grid">
         <article class="insight"><div class="insight-label">OBSERVATION A <span>·</span> FIGURE 3</div><h3>Fewer steps can be enough.</h3><p>Tail initialization reaches the 10-step Gaussian baseline with 4 steps for π₀.₅ and 6 for SmolVLA, across the tested diagnostic benchmarks.</p><figure><img src="assets/figures/figure-3-tail-reuse.webp" alt="Figure 3: Error ratios for tail initialization with 2, 4, 6 and 8 denoising steps against a 10-step Gaussian reference." loading="eager" width="1212" height="471"/><figcaption>Action-tail initialization vs. Gaussian restart.</figcaption></figure></article>
         <article class="insight"><div class="insight-label">OBSERVATION B <span>·</span> FIGURE 2</div><h3>One budget does not fit all.</h3><p>Sample-wise optimal denoising steps span 1–10. The distribution varies considerably across samples and model backbones.</p><figure><img src="assets/figures/figure-2-adaptive-budget.webp" alt="Figure 2: Distributions of optimal denoising steps for pi zero point five and SmolVLA." loading="eager" width="1212" height="519"/><figcaption>Optimal denoising steps are sample-dependent.</figcaption></figure></article>
@@ -82,7 +82,7 @@
   <section class="section results-section tinted" id="experiments" aria-labelledby="experiments-title">
     <div class="shell">
       <div class="section-kicker">04 <span>/</span> EXPERIMENTS</div>
-      <div class="section-heading"><div><h2 id="experiments-title">Efficiency, <em>without the trade-off.</em></h2></div><p>Evaluated on four VLA backbones and four benchmarks. VLA-Rolling lowers chunk inference latency in all 16 model–benchmark combinations, while success rate rises in 14.</p></div>
+      <div class="section-heading"><div><h2 id="experiments-title"><span class="heading-main">Efficiency,</span> <em>without the trade-off.</em></h2></div><p>Evaluated on four VLA backbones and four benchmarks. VLA-Rolling lowers chunk inference latency in all 16 model–benchmark combinations, while success rate rises in 14.</p></div>
       <div class="results-highlight"><div><span class="highlight-eyebrow">ACROSS ALL 16 PAIRS</span><h3>Less compute.<br/><span>Better control.</span></h3><p>The largest latency reduction is 32.52% (MolmoAct2 on LIBERO); the largest success gain is +15.08% (SmolVLA on LIBERO-Plus).</p></div><div class="highlight-metrics"><div><strong>−32.52<span>%</span></strong><small>Largest chunk-latency reduction</small></div><div><strong>+15.08<span>%</span></strong><small>Largest success-rate increase</small></div></div></div>
       <div class="result-content">
         <div class="table-top"><div><h3>Benchmark comparison</h3><p>Choose a benchmark to inspect all four VLA backbones.</p></div><span class="table-tag">Table 1 · Main paper</span></div>
@@ -102,13 +102,59 @@
 </div>
       </div>
       <div class="result-footer"><p>Latency measures model inference time <strong>per action chunk</strong>, not robot control frequency or total task duration. Two success-rate results decline slightly (X-VLA on LIBERO-Plus and RoboTwin), while their latency still improves.</p></div>
+
+      <section class="experiment-detail" id="ablation" aria-labelledby="ablation-title">
+        <div class="section-kicker">COMPONENT ABLATION <span>/</span> TABLE 2</div>
+        <div class="section-heading"><div><h2 id="ablation-title"><span class="heading-main">Each part</span> <em>has a purpose.</em></h2></div><p>Which components turn action reuse into better control? With π₀.₅ fixed, Table 2 isolates tail inheritance, renoising, and adaptive denoising across three benchmarks.</p></div>
+        <div class="result-content">
+          <div class="table-top"><div><h3>What each component contributes</h3><p>Baseline measurements and component ablations reproduced from Table 2.</p></div><span class="table-tag">Table 2 · Main paper</span></div>
+          <div class="component-key" aria-label="Component definitions"><span><strong>A</strong> Action-tail inheritance</span><span><strong>B</strong> Confidence-guided renoising</span><span><strong>C</strong> Adaptive-step denoising</span><span><strong>B<sub>fixed</sub></strong> Fixed 50% renoising</span></div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Table 2 component ablation; scroll horizontally on small screens">
+            <table class="ablation-table" aria-label="Table 2: Ablation study with pi zero point five" aria-describedby="ablation-note">
+              <thead>
+                <tr><th rowspan="2" scope="col">Method</th><th colspan="2" scope="colgroup">LIBERO</th><th colspan="2" scope="colgroup">MetaWorld</th><th colspan="2" scope="colgroup">LIBERO-Plus</th></tr>
+                <tr><th scope="col">SR (%) ↑</th><th scope="col">Cost (ms) ↓</th><th scope="col">SR (%) ↑</th><th scope="col">Cost (ms) ↓</th><th scope="col">SR (%) ↑</th><th scope="col">Cost (ms) ↓</th></tr>
+              </thead>
+              <tbody>
+                <tr class="ablation-baseline"><th scope="row">π₀.₅ baseline</th><td>96.38</td><td>166.04</td><td>58.55</td><td>217.28</td><td>84.73</td><td>161.92</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="delta-heading"><th scope="col">Variant vs. baseline</th><th scope="col">Δ SR (%) ↑</th><th scope="col">Δ Cost (%) ↓</th><th scope="col">Δ SR (%) ↑</th><th scope="col">Δ Cost (%) ↓</th><th scope="col">Δ SR (%) ↑</th><th scope="col">Δ Cost (%) ↓</th></tr>
+                <tr><th scope="row">+ A</th><td class="negative">−2.13%</td><td class="negative">+0.02%</td><td class="positive">+9.30%</td><td class="negative">+0.01%</td><td class="negative">−4.89%</td><td class="negative">+0.02%</td></tr>
+                <tr><th scope="row">+ A + B<sub>fixed</sub></th><td class="positive">+0.20%</td><td class="negative">+0.02%</td><td class="positive">+9.28%</td><td class="negative">+0.02%</td><td class="negative">−0.16%</td><td class="negative">+0.02%</td></tr>
+                <tr><th scope="row">+ A + B</th><td class="positive">+0.37%</td><td class="negative">+0.55%</td><td class="positive">+9.07%</td><td class="negative">+0.42%</td><td class="negative">−0.22%</td><td class="negative">+0.84%</td></tr>
+                <tr><th scope="row">+ A + C</th><td class="negative">−1.48%</td><td class="positive">−22.19%</td><td class="positive">+8.05%</td><td class="positive">−15.93%</td><td class="negative">−4.29%</td><td class="positive">−11.91%</td></tr>
+                <tr class="full-model"><th scope="row">Full model · A + B + C</th><td class="positive">+1.45%</td><td class="positive">−23.03%</td><td class="positive">+9.33%</td><td class="positive">−16.74%</td><td class="positive">+0.69%</td><td class="positive">−12.07%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note" id="ablation-note">SR = success rate; Cost = model inference time per action chunk. Δ SR is the absolute success-rate difference (variant − baseline), shown with %; Δ Cost is a relative percentage change. These are Table 2's own baseline measurements, which differ slightly from Table 1. <a href="assets/VLA-Rolling.pdf#page=8" target="_blank" rel="noopener">Source: manuscript, p. 8.</a></p>
+        </div>
+        <div class="evidence-notes">
+          <article class="evidence-note"><h3>Reuse needs correction.</h3><p>Tail inheritance alone (+A) improves MetaWorld but reduces success on LIBERO and LIBERO-Plus. On LIBERO-Plus, the change is <strong>−4.89%</strong>; adding renoising brings it close to baseline (−0.16% with fixed noise; −0.22% with confidence-guided noise). Reusing a tail therefore needs a mechanism to correct actions that no longer fit the current observation.</p></article>
+          <article class="evidence-note"><h3>The full combination delivers both gains.</h3><p>Adaptive steps without renoising (+A+C) cut inference cost by <strong>11.91–22.19%</strong>, but success remains below baseline on two benchmarks. The full model is the only tested variant that improves success and lowers cost on all three: <strong>+1.45%, +9.33%, and +0.69%</strong> in success, alongside cost reductions of 23.03%, 16.74%, and 12.07%.</p></article>
+        </div>
+      </section>
+
+      <section class="experiment-detail" id="confidence" aria-labelledby="confidence-title">
+        <div class="section-kicker">CONFIDENCE ANALYSIS <span>/</span> FIGURE 5</div>
+        <div class="section-heading"><div><h2 id="confidence-title"><span class="heading-main">Different outcomes,</span> <em>different budgets.</em></h2></div><p>On MetaWorld, successful and failed trajectories receive different denoising budgets within every task-difficulty group. Figure 5 compares their average steps and episode counts.</p></div>
+        <figure class="figure-card confidence-figure">
+          <a href="assets/figures/figure-5-confidence.webp" target="_blank" rel="noopener" aria-label="Open Figure 5 at full resolution"><img src="assets/figures/figure-5-confidence.webp" alt="Figure 5: Successful versus failed episodes average 7.23 versus 5.80 denoising steps on easy tasks, 8.34 versus 6.01 on medium, 6.20 versus 4.35 on hard, and 7.03 versus 5.96 on very hard. Success/failure counts are 350/70, 87/78, 48/42, and 24/51 respectively." loading="lazy" width="1209" height="417" /></a>
+          <figcaption><strong>Figure 5.</strong> Average denoising steps by task difficulty (left), with successful and failed episode counts (right). <span>From the manuscript, p. 9.</span> <a class="figure-zoom" href="assets/figures/figure-5-confidence.webp" target="_blank" rel="noopener">View full size ↗</a></figcaption>
+        </figure>
+        <div class="evidence-notes">
+          <article class="evidence-note"><h3>A consistent gap within each group.</h3><p>Successful episodes average <strong>1.43, 2.33, 1.85, and 1.07 more steps</strong> than failed episodes on easy, medium, hard, and very hard tasks. The largest gap is on medium tasks: 8.34 versus 6.01. These averages show that confidence-guided budget allocation distinguishes trajectories with different outcomes.</p></article>
+          <article class="evidence-note"><h3>More steps are not a guarantee.</h3><p>The average budget does not rise monotonically with task difficulty: successful medium tasks use more steps than successful hard or very hard tasks. Episode counts also differ across groups (from 350 successes on easy tasks to 24 on very hard tasks). Figure 5 shows an association with outcomes; it does not establish that simply adding denoising steps causes success.</p></article>
+        </div>
+      </section>
     </div>
   </section>
 
   <section class="section" id="real-world" aria-labelledby="real-world-title">
     <div class="shell">
       <div class="section-kicker">05 <span>/</span> REAL-WORLD VALIDATION</div>
-      <div class="section-heading"><div><h2 id="real-world-title">Ready when the <em>world changes.</em></h2></div><p>An AgileX PiPER 6-DoF robot is asked to put a potato into a plate. When the target plate is switched during execution, confidence reacts and denoising increases.</p></div>
+      <div class="section-heading"><div><h2 id="real-world-title"><span class="heading-main">Ready when the</span> <em>world changes.</em></h2></div><p>An AgileX PiPER 6-DoF robot is asked to put a potato into a plate. When the target plate is switched during execution, confidence reacts and denoising increases.</p></div>
       <div class="realworld-layout"><figure class="figure-card realworld-figure"><img src="assets/figures/figure-6-real-world.webp" alt="Figure 6: Real robot frames for plate replacement during execution and denoising step response to the change." loading="eager" width="1209" height="795"/><figcaption><strong>Figure 6.</strong> A target change during a pick-and-place task elicits adaptive refinement. <span>From the manuscript, p. 9.</span></figcaption></figure>
         <aside class="realworld-aside"><h3>On a physical robot</h3><p>With a frozen π₀.₅ backbone, VLA-Rolling adapts to a mid-trajectory target change while reducing model inference latency.</p><div class="real-mini"><span>Task success rate</span><div class="big-arrow"><span>70%</span><span class="arrowglyph">→</span><strong>75%</strong></div><small>14/20 → 15/20 successful trials</small></div><div class="real-mini"><span>Inference latency</span><div class="big-arrow"><span>227.28</span><span class="arrowglyph">→</span><strong>176.50</strong></div><small>ms per action chunk · Table 4</small></div><p class="real-disclaimer">Single real-world task described in the submitted manuscript; these figures do not imply broader physical-world generalization.</p></aside></div>
     </div>
@@ -116,7 +162,7 @@
 
   <section class="section citation-section tinted" id="citation" aria-labelledby="citation-title">
     <div class="shell citation-shell">
-      <div><div class="section-kicker">06 <span>/</span> CITE THIS WORK</div><h2 id="citation-title">Citation & <em>resources.</em></h2><p>For now, the manuscript is under double-blind review. Citation metadata and public model links can be updated when they are available.</p><div class="resource-list"><a data-link="paperPdf" href="assets/VLA-Rolling.pdf" target="_blank" rel="noopener">Read the manuscript (PDF) <svg class="icon"><use href="#i-arrow"/></svg></a><a data-link="code" href="https://github.com/chenbao123ww/VLA-Rolling" target="_blank" rel="noopener noreferrer">View the code repository <svg class="icon"><use href="#i-arrow"/></svg></a></div></div>
+      <div><div class="section-kicker">06 <span>/</span> CITE THIS WORK</div><h2 id="citation-title"><span class="heading-main">Citation &</span> <em>resources.</em></h2><p>For now, the manuscript is under double-blind review. Citation metadata and public model links can be updated when they are available.</p><div class="resource-list"><a data-link="paperPdf" href="assets/VLA-Rolling.pdf" target="_blank" rel="noopener">Read the manuscript (PDF) <svg class="icon"><use href="#i-arrow"/></svg></a><a data-link="code" href="https://github.com/chenbao123ww/VLA-Rolling" target="_blank" rel="noopener noreferrer">View the code repository <svg class="icon"><use href="#i-arrow"/></svg></a></div></div>
       <div class="bib-box"><div class="bib-header"><span>BIBTEX <small>ANONYMOUS DRAFT</small></span><button id="copy-bib" type="button" class="copy-btn" aria-label="Copy BibTeX"><svg class="icon"><use href="#i-copy"/></svg> <span>Copy</span></button></div><pre id="bibtex">@misc{vlarolling,
   title = {VLA-Rolling: Fewer Denoising Steps,
     Better Control via Adaptive Action Reuse},

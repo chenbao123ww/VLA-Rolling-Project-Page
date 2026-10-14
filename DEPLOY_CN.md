@@ -7,8 +7,9 @@
 ## 主页已有内容
 
 - 论文标题、基于原文整理的简介、方法三个阶段及公式。
-- 从 PDF 提取的原始方法框架和实验图：Figure 1、2、3、4、6。
+- 从 PDF 提取的原始方法框架和实验图：Figure 1、2、3、4、5、6。
 - Table 1 的全部 16 组实验结果，可在网页中切换 LIBERO、MetaWorld、LIBERO-Plus、RoboTwin 2.0。
+- Table 2 的完整组件消融结果与分析，以及 Figure 5 的置信度与去噪预算分析。
 - 真实机器人实验结果（70% → 75%，227.28 → 176.50 ms/chunk）。
 - Paper、Code、Model、arXiv 按钮及匿名草稿 BibTeX。
 

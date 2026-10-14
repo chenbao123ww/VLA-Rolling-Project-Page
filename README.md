@@ -13,7 +13,7 @@ A complete, dependency-free research project website generated from the manuscri
 - `script.js` — benchmark tabs, mobile navigation, BibTeX copy, resource-link states
 - `site-config.js` — **edit this file to set URLs in one place**
 - `assets/VLA-Rolling.pdf` — uploaded manuscript, opened by the **Paper (PDF)** button
-- `assets/figures/` — original manuscript Figures 1, 2, 3, 4, 5, and 6 extracted from the PDF (Figure 5 retained as an asset for future expansion)
+- `assets/figures/` — original manuscript Figures 1, 2, 3, 4, 5, and 6 extracted from the PDF (all six figures are displayed on the page)
 - `assets/favicon.svg` — favicon
 - `.nojekyll` — disable unnecessary Jekyll processing
 
@@ -78,6 +78,8 @@ The manuscript itself has **anonymous authors**. Update the hero byline and the 
 - Method: Figure 4 (p. 5); stages in Section 3, pages 4–6.
 - Tail reuse diagnostics: Figures 2 and 3 (pp. 3–4).
 - Benchmarks: exact values from Table 1 (p. 7). Two X-VLA pairs see slight success-rate decreases; the site discloses this.
+- Component ablation: Table 2 (p. 8), including its own baseline measurements and all five variants.
+- Confidence analysis: Figure 5 (p. 9), including step differences and episode counts.
 - Real-world experiment: Figure 6 (p. 9) and Table 4 (p. 8).
 
 **No tracking code, remote fonts, JavaScript frameworks, build tools, or external dependencies** are needed.
